@@ -1,0 +1,241 @@
+<html>
+<head>
+    <title>موقع بيتزا رائع</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            color: yellow;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin-left: 20px;
+        }
+
+        .banner {
+            height: 500px;
+            background-image: url("pizza-banner.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner h1 {
+            color: white;
+            font-size: 64px;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .content h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #666;
+        }
+
+        .card-price {
+            color: #f44336;
+            font-weight: bold;
+            margin-top: 10px; 
+        }
+
+        .card-button {
+            display:block; 
+           width :100%; 
+           padding :10 px; 
+           background-color :#333; 
+           color :white; 
+           text-align :center; 
+           text-decoration :none; 
+           margin-top :10 px; 
+           border-radius :5 px; 
+       } 
+
+       .card-button:hover { 
+           background-color :#f44336; 
+       } 
+
+       .footer { 
+           background-color :#333; 
+           color :white; 
+           padding :20 px; 
+           text-align :center; 
+       } 
+
+   </style> 
+</head> 
+<body> 
+   <div class="container"> 
+       <div class="navbar"> 
+           <div class="logo"> 
+               موقع بيتزا رائع
+           </div> 
+           <ul class="menu"> 
+               <li><a href="#">الرئيسية</a></li> 
+               <li><a href="#">قائمة الطعام</a></li> 
+               <li><a href="#">حولنا</a></li> 
+               <li><a href="#">اتصل بنا</a></li> 
+           </ul> 
+       </div> 
+
+       <div class="banner"> 
+           <h1>أفضل البيتزا في المدينة</h1> 
+       </div> 
+
+       <div class="content"> 
+           <h2>قائمة الطعام</h2> 
+
+           <div class="cards" id="cards"> 
+
+               <!-- الكروت ستتم إضافتها هنا بواسطة جافاسكربت --> 
+
+           </div> 
+
+       </div> 
+
+       <div class="footer"> 
+           جميع الحقوق محفوظة © 2021
+       </div> 
+
+   </div> 
+
+   <script> 
+
+       // مصفوفة تحتوي على بيانات البيتزا
+       var pizzas = [ 
+           { 
+               name : "بيتزا مارغريتا", // اسم البيتزا
+               image : "pizza-margherita.jpg", // اسم صورة البيتزا
+               price : 10, // سعر البيتزا
+               description : "بيتزا كلاسيكية بالجبنة والطماطم والريحان" // وصف البيتزا
+           }, 
+
+           { 
+               name : "بيتزا ببروني", // اسم البيتزا
+               image : "pizza-pepperoni.jpg", // اسم صورة البيتزا
+               price : 15, // سعر البيتزا
+               description : "بيتزا شهية بالجبنة والسلامي المحمر" // وصف البيتزا
+           }, 
+
+           { 
+               name : "بيتزا دجاج", // اسم البيتزا
+               image : "pizza-chicken.jpg", // اسم صورة البيتزا
+               price : 12, // سعر البيتزا
+               description : "بيتزا لذيذة بالجبنة والدجاج والذرة" // وصف البيتزا
+           }, 
+
+           { 
+               name : "بيتزا خضار", // اسم البيتزا
+               image : "pizza-veggie.jpg", // اسم صورة البيتزا
+               price : 11, // سعر البيتزا
+               description : "بيتزا صحية بالجبنة والخضار المشكلة" // وصف البيتزا
+           } 
+
+       ]; 
+
+       // حصول على عنصر cards من html
+       var cards = document.getElementById("cards"); 
+
+       // تكرار على كل عنصر في مصفوفة pizzas
+       for (var i = 0; i < pizzas.length; i++) { 
+
+           // حصول على بيانات البيتزا من المصفوفة
+           var pizza = pizzas[i]; 
+
+           // إنشاء عنصر div جديد للكارد
+           var card = document.createElement("div"); 
+
+           // إضافة صنف card للعنصر div
+           card.classList.add("card"); 
+
+           // إنشاء عنصر img جديد للصورة
+           var img = document.createElement("img"); 
+
+           // إضافة مصدر الصورة من بيانات البيتزا
+           img.src = pizza.image; 
+
+           // إضافة عنصر img كابن للعنصر card
+           card.appendChild(img); 
+
+           // إنشاء عنصر div جديد للكارد بودي
+           var cardBody = document.createElement("div"); 
+
+           // إضافة صنف card-body للعنصر div
+           cardBody.classList.add("card-body"); 
+
+           // إنشاء عنصر h3 جديد للكارد تايتل
+           var cardTitle = document.createElement("h3");
